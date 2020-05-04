@@ -39,7 +39,7 @@ function determineStops(msg){
           output += `\nIn consolidation and bullish (Consolidation Low - (ATR * .5)): ${breakLow}`;
         }
         output += '\nClose - (ATR * 1.5) at: '+atrStop;
-        if(lastprice > ma13) { output+=`SMA 13 at: ${ma13}`;}
+        if(lastprice > ma13) { output+=`\nSMA 13 at: ${ma13}`;}
     }
     if(msg.timePeriod == "W"){
       output = '\nSuggested stops based on long positions on weekly chart: ';
@@ -49,7 +49,7 @@ function determineStops(msg){
         output += `\nIn consolidation and bullish (Consolidation Low - (ATR * .5)): ${breakLow}`;
       }
       output += '\nClose - (ATR * 1.5) at: '+atrStop;
-      if(lastprice > ma13) { output+=`SMA 13 at: ${ma13}`;}
+      if(lastprice > ma13) { output+=`\nSMA 13 at: ${ma13}`;}
     }
     if(msg.timePeriod == "D"){
       output = '\nSuggested stops based on long positions on daily charts: ';
@@ -59,7 +59,7 @@ function determineStops(msg){
         output += `\nIn consolidation and bullish (Consolidation Low - (ATR * .5)): ${breakLow}`;
       }
       output += '\nClose - (ATR * 1.5) at: '+atrStop;
-      if(lastprice > ma13) { output+=`SMA 13 at: ${ma13}`;}
+      if(lastprice > ma13) { output+=`\nSMA 13 at: ${ma13}`;}
     }
   }
   if(lastprice < ma21){
@@ -72,17 +72,17 @@ function determineStops(msg){
           output += `\nIn consolidation and bearish (Consolidation High + (ATR * .5)): ${breakHigh}`;
         }
         output += '\nClose - (ATR * 1.5) at: '+atrStop;
-        if(lastprice < ma13) { output+=`SMA 13 at: ${ma13}`;}
+        if(lastprice < ma13) { output+=`\nSMA 13 at: ${ma13}`;}
     }
     if(msg.timePeriod == "W"){
       output = '\nSuggested stops base on weekly chart: ';
-      if(sar > lastprice) output += 'SAR value at: ' + sar;
+      if(sar > lastprice) output += '\nSAR value at: ' + sar;
       if(consolDD == 1 || consolDD == 4){
 
         output += `\nIn consolidation and bearish (Consolidation High + (ATR * .5)): ${breakHigh}`;
       }
       output += '\nClose - (ATR * 1.5) at: '+atrStop;
-      if(lastprice < ma13) { output+=`SMA 13 at: ${ma13}`;}
+      if(lastprice < ma13) { output+=`\nSMA 13 at: ${ma13}`;}
     }
     if(msg.timePeriod == "D"){
       output = '\nSuggested stops base on daily charts: ';
@@ -92,7 +92,7 @@ function determineStops(msg){
         output += `\nIn consolidation and bearish (Consolidation High + (ATR * .5)): ${breakHigh}`;
       }
       output += '\nClose - (ATR * 1.5) at: '+atrStop;
-      if(lastprice < ma13) { output+=`SMA 13 at: ${ma13}`;}
+      if(lastprice < ma13) { output+=`\nSMA 13 at: ${ma13}`;}
     }
   }
 
