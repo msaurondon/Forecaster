@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+  <script>
+var symbol;
+function getStock(){
+  $.getJSON("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo",function(json){
+    var metaData = json["Meta Data"];
+    var stockData = json["Time Series (Daily)"];
+    getMetaData(metaData);
+    metaData2(json);
+    getStockData(stockData);
+
+  })
+}
+
+function getMetaData(metaData){
+  symbol = metaData["2. Symbol"];
+  document.write(symbol);
+}
+
+function metaData2(metaData){
+  document.write("<br>"+metaData["Meta Data"]["2. Symbol"]);
+
+}
+
+function getStockData(stockData){
+  for(var days in stockData){
+    var stock_info = stockData[days]
+    console.log(stock_info["2. high"]);
+    document.write("<br>"+stock_info["2. high"] +" - " + stock_info["3. low"]);
+  }
+
+}
+
+getStock();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Indicator</th>
+      <th>Evaluation</th>
+      <th>&nbsp;</th>
+      <th>Indicator</th>
+      <th>Evaluation</th>
+      <th>&nbsp;</th>
+      <th>Indicator</th>
+      <th>Evaluation</th>
+      <th>&nbsp;</th>
+      <th>Indicator</th>
+      <th>Evaluation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td >PPO</td>
+      <td>
+        <!-- <div class="select">
+          <select name="" id="m15">
+            <option value="1">Bull</option>
+            <option value="0">Bear</option>
+          </select>
+        </div> -->
+        <div><input class="input" type="text" placeholder="Value" id="m15"></div>
+      </td>
+      <td>&nbsp;</td>
+      <td>PPO Histo</td>
+      <td>
+        <!-- <div class="select">
+          <select name="" id="m16">
+            <option value="1">Bull</option>
+            <option value="0">Bear</option>
+          </select>
+        </div> -->
+        <div><input class="input" type="text" placeholder="Value" id="m16"></div>
+      </td>
+      <td>&nbsp;</td>
+      <td>CCI 50</td>
+      <td>
+        <!-- <div class="select">
+          <select name="" id="m17">
+            <option value="">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</option>
+          </select>
+        </div> -->
+        <div><input class="input" type="text" placeholder="Value" id="m17"></div>
+      </td>
+      <td>&nbsp;</td>
+      <td>CCI 14</td>
+      <td>
+        <!-- <div class="select">
+          <select name="" id="m18">
+            <option value="1">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</option>
+          </select>
+        </div> -->
+        <div><input class="input" type="text" placeholder="Value" id="m18"></div>
+      </td>
+    </tr><!--end of row 1 -->
+    <tr>
+      <td>Stoch</td>
+      <td>
+        <div class="select">
+          <select name="" id="m19">
+            <option value="1">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</option>
+          </select>
+        </div>
+      </td>
+      <td>&nbsp;</td>
+      <td>%R</td>
+      <td>
+        <div class="select">
+          <select name="" id="m20">
+            <option value="1">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</option>
+          </select>
+        </div>
+      </td>
+      <td>&nbsp;</td>
+      <td>APO</td>
+      <td>
+        <div class="select">
+          <select name="" id="m21">
+            <option value="1">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</option>
+          </select>
+        </div>
+      </td>
+
+      <td>TTM</td>
+      <td>
+        <div class="select">
+          <select name="" id="m22">
+            <option value="1">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</option>
+          </select>
+        </div>
+      </td>
+    </tr><!--end of row 2 -->
+    <tr>
+      <td>Bull RSI</td>
+      <td>
+        <div class="select">
+          <select name="" id="m23">
+            <option value="1">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</option>
+          </select>
+        </div>
+      </td>
+      <td>&nbsp;</td>
+      <td>Bear RSI</td>
+      <td>
+        <div class="select">
+          <select name="" id="m24">
+            <option value="1">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</option>
+          </select>
+        </div>
+      </td>
+      <td>&nbsp;</td>
+      <td>5 RSI</td>
+      <td>
+        <div class="select">
+          <select name="" id="m25">
+            <option value="1">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</option>
+          </select>
+        </div>
+      </td>
+      <td>&nbsp;</td>
+      <td>SAR</td>
+      <td>
+        <div class="select">
+          <select name="" id="m26">
+            <option value="1">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</option>
+          </select>
+        </div>
+      </td>
+    </tr><!-- end of row 3-->
+    <tr>
+      <td>BSI</td>
+      <td>
+        <div class="select">
+          <select name="" id="m27">
+            <option value="1">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</option>
+          </select>
+        </div>
+      </td>
+      <td>&nbsp;</td>
+      <td>EMA 34</td>
+      <td>
+          <div><input class="input" type="text" placeholder="Value" id="m28"></div>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>
+        <div class="select">
+          <select name="" id="">
+            <option value="1">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</option>
+          </select>
+        </div>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>
+        <div class="select">
+          <select name="" id="">
+            <option value="1">Bull</option>
+            <option value="-1">Bear</option>
+            <option value="0">Neutral</o1.77ption>
+          </select>
+        </div>
+      </td>
+    </tr><!-- end of row 4 -->
+  </tbody>
+</table>

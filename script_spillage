@@ -1,0 +1,113 @@
+var multipliers = [{key:8,bull:2.618,bear:0},{key:7,bull:1.618,bear:0}];
+var atr = 1.00;
+var close = 10.00;
+var selKey = 7;
+var multi = multipliers.find(m => m.key == selKey);
+console.log(multi.bull);
+console.log((atr * multi.bull)+close);
+
+
+var cci50 = -69.66
+var cci14 = 46.74
+var ema34 = 8.48
+var prices = 7.43
+
+var sum50 = 0;
+var sum14 = 0;
+var sumTotal = 0;
+var output = '';
+var opportunity = '';
+
+if(cci50 > 0 && cci50 < 100) sum50 = 1;
+if(cci50 > 100) sum50 = 2;
+if(cci50 > -100 && cci50 < 0) sum50 = -1;
+if(cci50 < -100) sum50 = -2;
+
+if(cci14 > 0 && cci14 < 75) sum14 = 1;
+if(cci14 > 75) sum14 = 2;
+if( cci14 > -75 && cci14 < 0) sum14 = -1;
+
+if(cci14 < -75) sum14 = -2;
+
+sumTotal = sum50 + sum14;
+switch(sumTotal){
+	case (2):
+  	output = 'bull';
+    break;
+  case (3):
+  	output = 's. bull';
+    break;
+  case (4):
+  	output = 'vs. bull';
+    break;
+  case (-2):
+  	output = 'bear';
+    break;
+  case (-3):
+  	output = 's. bear';
+    break;
+  case (-4):
+  	output = 'vs. bear';
+    break;
+   default:
+   	output = 'neutral';
+    break;
+}
+
+if ((prices > ema34) &&
+(cci50 > 0) &&
+(cci14 > 0)){
+opportunity = 'Go Long!';
+}
+
+if ((prices < ema34) &&
+(cci50 < 0) &&
+(cci14 < 0)){
+opportunity = 'Go Short!';
+}
+
+if((prices > ema34) &&
+(cci14 < 100) &&
+(sumTotal < 0)){
+opportunity = "Cover Long!";
+}
+
+if((prices > ema34) &&
+(cci14 < 100) &&
+(sumTotal > 0)){
+opportunity = "Hold";
+}
+
+if((prices < ema34)&&
+(cci14 > -100)&&
+(sumTotal < 0)){
+opportunity = 'Hold';
+}
+
+if((prices < ema34) &&
+(cci14 > -100)){
+opportunity = 'Cover Short!';
+}
+
+if((prices > ema34)&&
+(cci50 > 100)&&
+(cci14 > 100)){
+opportunity = 're-enter long or add on';
+}
+
+if((prices < ema34)&&
+(cci50 < -100)&&
+(cci14 < -100)){
+opportunity = 're-enter short or add on';
+}
+
+
+
+
+
+
+console.log("sum50: "+ sum50);
+console.log("sum14: "+ sum14);
+
+console.log("trend: " +output);
+console.log(opportunity);

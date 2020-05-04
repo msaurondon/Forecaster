@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+    function collectJSON(){
+      var xmlhttp= new XMLHttpRequest();
+      xmlhttp.open("GET","https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo",false);
+      xmlhttp.send();
+      if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+        var result = xmlhttp.responseText;
+        var result2 = JSON.parse(result);
+        var metaData = result2["Meta Data"];
+        var stockData = result2["Time Series (Daily)"];
+        symbol(metaData);
+        ATR(stockData);
+        SMA(stockData,21);
+        SMAhl2(stockData,21);
+        prices(stockData);
+        //document.write("<div>Meta Data:</div><div>" + JSON.stringify(metaData) + "</div>");
+        //document.write("<div>Data:</div><div>" +JSON.stringify(stockData)+"</div>");
+      }
+    }
+
+    function symbol(jsonMSG){
+      var symbol = jsonMSG["2. Symbol"];
+      document.write("<h1>"+ symbol +"</h1>");
+
+
+    }
+
+    function prices(jsonMSG){
+      var counter = 0;
+      for(x in jsonMSG){
+        var date = Object.keys(jsonMSG)[counter];
+        document.write("<br>" + date + " High: " + jsonMSG[date]["2. high"] + " Low: " +jsonMSG[date]["3. low"]+ " Close: " +jsonMSG[date]["4. close"]
+        + " ATR: "+ (jsonMSG[date]["2. high"] - jsonMSG[date]["3. low"]));
+
+        counter++;
+      }
+      //document.write(Object.keys(jsonMSG));
+      // for(x in jsonMSG){
+      //   var date = Object.keys(jsonMSG[x]);
+      //   document.write("<br>: "+JSON.stringify(jsonMSG));
+      // }
+    }
+
+    function ATR(jsonMSG){
+      var counter = 0;
+      var sum = 0;
+      var high = 0;
+      var low = 0;
+      for(x in jsonMSG){
+        var date = Object.keys(jsonMSG)[counter];
+        //document.write("<br>" + date + " High: " + jsonMSG[date]["2. high"] + " Low: " +jsonMSG[date]["3. low"]+ " Close: " +jsonMSG[date]["4. close"]);
+        if(counter <= 21){
+          high = jsonMSG[date]["2. high"];
+          low = jsonMSG[date]["3. low"];
+          sum += (high  - low);
+        counter++;
+      } else {break;}
+      }
+
+      atr = sum/21;
+      document.write("<h1>ATR: " + atr + "</h1>");
+    }
+
+    function SMA(jsonMSG, timeframe){
+      var counter = 0;
+      var sum = 0;
+      var sma = 0;
+      for (x in jsonMSG){
+        var date = Object.keys(jsonMSG)[counter];
+          if(counter <= timeframe){
+            sum += parseInt(jsonMSG[date]["4. close"]);
+          } else {
+            break;
+          }
+          counter++;
+      }
+      sma = parseFloat(sum)/parseInt(timeframe);
+      document.write("<h2> Trend SMA: " +sma + "</h2>");
+    }
+
+    function SMAhl2(jsonMSG, timeframe){
+      var counter = 0;
+      var sum = 0;
+      var sma = 0;
+      for (x in jsonMSG){
+        var date = Object.keys(jsonMSG)[counter];
+          if(counter <= timeframe){
+            sum += (parseFloat(jsonMSG[date]["2. high"]) + parseFloat(jsonMSG[date]["3. low"]))/2;
+          } else {
+            break;
+          }
+          counter++;
+      }
+      sma = parseFloat(sum)/parseInt(timeframe);
+      document.write("<h2> Trend SMAhl2: " +sma + "</h2>");
+    }
+
+  </script>
+</head>
+<body>
+<button id="btnClick" onClick="collectJSON();">Collect</button>
+</body>
+</html>

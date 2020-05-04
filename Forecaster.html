@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+  <title>Forecaster v3</title>
+</head>
+
+<body>
+  <!-- General Information -->
+  <span class="tag is-info is-large">General Information</span>
+  <div class="box">
+    <div class="container is-fluid">
+      <div class="columns">
+        <div class="column">&nbsp;</div>
+        <div class="column">Monthly &nbsp;<input type="checkbox" id="checkMonthly" onclick="displayMonthly()"> </div>
+        <div class="column">Weekly &nbsp;<input type="checkbox" id="checkWeekly" onclick="displayWeekly()"> </div>
+        <div class="column">Daily &nbsp;<input type="checkbox" id="checkDaily" onclick="displayDaily()"> </div>
+        <!--<div class="column">Swift &nbsp;<input type="checkbox" id="checkSwift" onclick="displaySwift()"></div>-->
+        <div class="column">&nbsp;</div>
+      </div>
+
+      <div class="columns">
+        <div class="column">&nbsp;</div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="g1" placeholder="Date Ending"></div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="g2" placeholder="Symbol"></div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="g3" placeholder="Last Price"></div>
+        <div class="column">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+  <!-- End General Information -->
+  <!-- MONTHLY! -->
+  <!--Trend and HMA Data -->
+  <div class="container is-fluid" id="Monthly" style="display:none">
+    <span class="tag is-link is-large">Monthly</span>
+    <span class="tag is-info is-large">HMA, ATR, ATRx, and Trend</span>
+    <div id="Monthly">
+      <div class="box">
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column is-one-quarter">HMA
+              <div class="select">
+                <select name="HMA" id="m1">
+                  <option value="8">Very Strong Bull</option>
+                  <option value="7">Strong Bull</option>
+                  <option value="6">Bull</option>
+                  <option value="5">Neutral Bull</option>
+                  <option value="4">Neutral Bear</option>
+                  <option value="3">Bear</option>
+                  <option value="2">Strong Bear</option>
+                  <option value="1">Very Strong Bear</option>
+                </select>
+              </div><!-- End of DIV.SELECT -->
+            </div>
+            <div class="column is-one-quarter"><input type="text" class="input" placeholder="ATR" id="m2"></div>
+            <div class="column is-one-quarter"><input type="text" class="input" placeholder="ATRx" id="m3"></div>
+          </div><!-- end of columns-->
+
+          <div class="columns">
+            <div class="column is-one-third">
+              21 MA&nbsp;&nbsp;<input type="text" class="input" placeholder="21 MA" id="m4">
+              <!-- <div class="select">
+                <select name="" id="m4">
+                  <option value="1">Bull</option>
+                  <option value="0">Bear</option>
+                </select></div> -->
+            </div>
+            <div class="column is-one-third">
+              13 MA&nbsp;&nbsp;<input type="text" class="input" placeholder="13 MA" id="m5">
+              <!-- <div class="select">
+                <select name="" id="m5">
+                  <option value="1">Bull</option>
+                  <option value="0">Bear</option>
+                </select></div> -->
+            </div>
+            <div class="column is-one-third">
+              8 MA&nbsp;&nbsp;<input type="text" class="input" placeholder="8 MA" id="m6">
+              <!-- <div class="select">
+                <select name="" id="m6">
+                  <option value="1">Bull</option>
+                  <option value="0">Bear</option>
+                </select></div> -->
+            </div>
+          </div>
+          <!--end of columns-->
+        </div>
+        <!--end of container.is-fluid-->
+      </div>
+      <!--box end-->
+      <!-- End Trend and HMA Data -->
+      <span class="tag is-info is-large">Price Projection, Standard Deviation, and Consolidation</span>
+      <div class="box">
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column">Projections:</div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="m7" placeholder="Single Target"></div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="m8" placeholder="First Projection"></div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="m9" placeholder="Second Projection"></div>
+            <div class="column">&nbsp;</div>
+          </div>
+          <!--end of columns-->
+          <div class="columns">
+            <div class="column">Deviation:</div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="m10" placeholder="High"></div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="m11" placeholder="Low"></div>
+            <div class="column">&nbsp;</div>
+          </div>
+          <!--end of columns-->
+          <div class="columns">
+            <div class="column">Consolidation:</div>
+            <div class="column is-one-quarter">
+              <div class="select">
+                <select name="" id="m12">
+                  <option value="1">In Consolidation</option>
+                  <option value="2">Broken thru the high</option>
+                  <option value="3">Brokent thru the low</option>
+                  <option value="4">Re-Established</option>
+                  <option value="5">None</option>
+                </select>
+              </div>
+            </div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="m13" placeholder="High"></div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="m14" placeholder="Low"></div>
+            <div class="column">&nbsp;</div>
+          </div>
+          <!--end of columns-->
+        </div><!-- end of container.is-fluid-->
+      </div><!-- box end-->
+      <!-- End Price Projection and Standard Deviation-->
+      <span class="tag is-info is-large">Chart Indicators and Score</span>
+      <div class="box">
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column">Indicator</div>
+            <div class="column">Evaluation</div>
+            <div class="column">Indicator</div>
+            <div class="column">Evaluation</div>
+            <div class="column">Indicator</div>
+            <div class="column">Evaluation</div>
+            <div class="column">Indicator</div>
+            <div class="column">Evaluation</div>
+          </div>
+          <div class="columns">
+            <div class="column">PPO</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m15"></div>
+            <div class="column">PPO Histo</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m16"></div>
+            <div class="column">RSI 14</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m17"></div>
+            <div class="column">RSI 5</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m18"></div>
+          </div>
+          <div class="columns">
+            <div class="column">CCI 50</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m19"></div>
+            <div class="column">CCI 14</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m20"></div>
+            <div class="column">EMA 34</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m21"></div>
+            <div class="column">SAR</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m22"></div>
+          </div>
+          <div class="columns">
+            <div class="column">%K</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m23"></div>
+            <div class="column">%D</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m24"></div>
+            <div class="column">%R</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m25"></div>
+            <div class="column">APO</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m26"></div>
+          </div>
+          <div class="columns">
+            <div class="column">SMA 10</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m27"></div>
+            <div class="column">BSI</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m28"></div>
+            <div class="column">BSI MA</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="m29"></div>
+            <div class="column">&nbsp;</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id=""></div>
+          </div>
+
+
+        </div>
+        <!--end of container.is-fluid-->
+      </div><!-- box end -->
+
+
+
+
+
+    </div>
+  </div>
+  <!-- End Monthly-->
+
+  <!-- WEEKLY! -->
+  <!--Trend and HMA Data -->
+  <div class="container is-fluid" id="Weekly" style="display:none">
+    <span class="tag is-link is-large">Weekly</span>
+    <span class="tag is-info is-large">HMA, ATR, ATRx, and Trend</span>
+    <div id="Weekly">
+      <div class="box">
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column is-one-quarter">HMA
+              <div class="select">
+                <select name="HMA" id="w1">
+                  <option value="8">Very Strong Bull</option>
+                  <option value="7">Strong Bull</option>
+                  <option value="6">Bull</option>
+                  <option value="5">Neutral Bull</option>
+                  <option value="4">Neutral Bear</option>
+                  <option value="3">Bear</option>
+                  <option value="2">Strong Bear</option>
+                  <option value="1">Very Strong Bear</option>
+                </select>
+              </div><!-- End of DIV.SELECT -->
+            </div>
+            <div class="column is-one-quarter"><input type="text" class="input" placeholder="ATR" id="w2"></div>
+            <div class="column is-one-quarter"><input type="text" class="input" placeholder="ATRx" id="w3"></div>
+          </div><!-- end of columns-->
+
+          <div class="columns">
+            <div class="column is-one-third">
+              21 MA&nbsp;&nbsp;<input type="text" class="input" placeholder="21 MA" id="w4">
+              <!-- <div class="select">
+                <select name="" id="m4">
+                  <option value="1">Bull</option>
+                  <option value="0">Bear</option>
+                </select></div> -->
+            </div>
+            <div class="column is-one-third">
+              13 MA&nbsp;&nbsp;<input type="text" class="input" placeholder="13 MA" id="w5">
+              <!-- <div class="select">
+                <select name="" id="m5">
+                  <option value="1">Bull</option>
+                  <option value="0">Bear</option>
+                </select></div> -->
+            </div>
+            <div class="column is-one-third">
+              8 MA&nbsp;&nbsp;<input type="text" class="input" placeholder="8 MA" id="w6">
+              <!-- <div class="select">
+                <select name="" id="m6">
+                  <option value="1">Bull</option>
+                  <option value="0">Bear</option>
+                </select></div> -->
+            </div>
+          </div>
+          <!--end of columns-->
+        </div>
+        <!--end of container.is-fluid-->
+      </div>
+      <!--box end-->
+      <!-- End Trend and HMA Data -->
+      <span class="tag is-info is-large">Price Projection, Standard Deviation, and Consolidation</span>
+      <div class="box">
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column">Projections:</div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="w7" placeholder="Single Target"></div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="w8" placeholder="First Projection"></div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="w9" placeholder="Second Projection"></div>
+            <div class="column">&nbsp;</div>
+          </div>
+          <!--end of columns-->
+          <div class="columns">
+            <div class="column">Deviation:</div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="w10" placeholder="High"></div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="w11" placeholder="Low"></div>
+            <div class="column">&nbsp;</div>
+          </div>
+          <!--end of columns-->
+          <div class="columns">
+            <div class="column">Consolidation:</div>
+            <div class="column is-one-quarter">
+              <div class="select">
+                <select name="" id="w12">
+                  <option value="1">In Consolidation</option>
+                  <option value="2">Broken thru the high</option>
+                  <option value="3">Brokent thru the low</option>
+                  <option value="4">Re-Established</option>
+                  <option value="5">None</option>
+                </select>
+              </div>
+            </div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="w13" placeholder="High"></div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="w14" placeholder="Low"></div>
+            <div class="column">&nbsp;</div>
+          </div>
+          <!--end of columns-->
+        </div><!-- end of container.is-fluid-->
+      </div><!-- box end-->
+      <!-- End Price Projection and Standard Deviation-->
+      <span class="tag is-info is-large">Chart Indicators and Score</span>
+      <div class="box">
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column">Indicator</div>
+            <div class="column">Evaluation</div>
+            <div class="column">Indicator</div>
+            <div class="column">Evaluation</div>
+            <div class="column">Indicator</div>
+            <div class="column">Evaluation</div>
+            <div class="column">Indicator</div>
+            <div class="column">Evaluation</div>
+          </div>
+          <div class="columns">
+            <div class="column">PPO</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w15"></div>
+            <div class="column">PPO Histo</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w16"></div>
+            <div class="column">RSI 14</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w17"></div>
+            <div class="column">RSI 5</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w18"></div>
+          </div>
+          <div class="columns">
+            <div class="column">CCI 50</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w19"></div>
+            <div class="column">CCI 14</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w20"></div>
+            <div class="column">EMA 34</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w21"></div>
+            <div class="column">SAR</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w22"></div>
+          </div>
+          <div class="columns">
+            <div class="column">%K</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w23"></div>
+            <div class="column">%D</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w24"></div>
+            <div class="column">%R</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w25"></div>
+            <div class="column">APO</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w26"></div>
+          </div>
+          <div class="columns">
+            <div class="column">SMA 10</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w27"></div>
+            <div class="column">BSI</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w28"></div>
+            <div class="column">BSI MA</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="w29"></div>
+            <div class="column">&nbsp;</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id=""></div>
+          </div>
+
+        </div>
+        <!--end of container.is-fluid-->
+      </div><!-- box end -->
+    </div>
+  </div>
+  <!-- End Weekly-->
+
+  <!-- DAILY! -->
+  <!--Trend and HMA Data -->
+  <div class="container is-fluid" id="Daily" style="display:none">
+    <span class="tag is-link is-large">Daily</span>
+    <span class="tag is-info is-large">HMA, ATR, ATRx, and Trend</span>
+    <div id="Monthly">
+      <div class="box">
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column is-one-quarter">HMA
+              <div class="select">
+                <select name="HMA" id="d1">
+                  <option value="8">Very Strong Bull</option>
+                  <option value="7">Strong Bull</option>
+                  <option value="6">Bull</option>
+                  <option value="5">Neutral Bull</option>
+                  <option value="4">Neutral Bear</option>
+                  <option value="3">Bear</option>
+                  <option value="2">Strong Bear</option>
+                  <option value="1">Very Strong Bear</option>
+                </select>
+              </div><!-- End of DIV.SELECT -->
+            </div>
+            <div class="column is-one-quarter"><input type="text" class="input" placeholder="ATR" id="d2"></div>
+            <div class="column is-one-quarter"><input type="text" class="input" placeholder="ATRx" id="d3"></div>
+          </div><!-- end of columns-->
+
+          <div class="columns">
+            <div class="column is-one-third">
+              21 MA&nbsp;&nbsp;<input type="text" class="input" placeholder="21 MA" id="d4">
+              <!-- <div class="select">
+                <select name="" id="m4">
+                  <option value="1">Bull</option>
+                  <option value="0">Bear</option>
+                </select></div> -->
+            </div>
+            <div class="column is-one-third">
+              13 MA&nbsp;&nbsp;<input type="text" class="input" placeholder="13 MA" id="d5">
+              <!-- <div class="select">
+                <select name="" id="m5">
+                  <option value="1">Bull</option>
+                  <option value="0">Bear</option>
+                </select></div> -->
+            </div>
+            <div class="column is-one-third">
+              8 MA&nbsp;&nbsp;<input type="text" class="input" placeholder="8 MA" id="d6">
+              <!-- <div class="select">
+                <select name="" id="m6">
+                  <option value="1">Bull</option>
+                  <option value="0">Bear</option>
+                </select></div> -->
+            </div>
+          </div>
+          <!--end of columns-->
+        </div>
+        <!--end of container.is-fluid-->
+      </div>
+      <!--box end-->
+      <!-- End Trend and HMA Data -->
+      <span class="tag is-info is-large">Price Projection, Standard Deviation, and Consolidation</span>
+      <div class="box">
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column">Projections:</div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="d7" placeholder="Single Target"></div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="d8" placeholder="First Projection"></div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="d9" placeholder="Second Projection"></div>
+            <div class="column">&nbsp;</div>
+          </div>
+          <!--end of columns-->
+          <div class="columns">
+            <div class="column">Deviation:</div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="d10" placeholder="High"></div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="d11" placeholder="Low"></div>
+            <div class="column">&nbsp;</div>
+          </div>
+          <!--end of columns-->
+          <div class="columns">
+            <div class="column">Consolidation:</div>
+            <div class="column is-one-quarter">
+              <div class="select">
+                <select name="" id="d12">
+                  <option value="1">In Consolidation</option>
+                  <option value="2">Broken thru the high</option>
+                  <option value="3">Brokent thru the low</option>
+                  <option value="4">Re-Established</option>
+                  <option value="5">None</option>
+                </select>
+              </div>
+            </div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="d13" placeholder="High"></div>
+            <div class="column is-one-quarter"><input class="input" type="text" id="d14" placeholder="Low"></div>
+            <div class="column">&nbsp;</div>
+          </div>
+          <!--end of columns-->
+        </div><!-- end of container.is-fluid-->
+      </div><!-- box end-->
+      <!-- End Price Projection and Standard Deviation-->
+      <span class="tag is-info is-large">Chart Indicators and Score</span>
+      <div class="box">
+        <div class="container is-fluid">
+          <div class="columns">
+            <div class="column">Indicator</div>
+            <div class="column">Evaluation</div>
+            <div class="column">Indicator</div>
+            <div class="column">Evaluation</div>
+            <div class="column">Indicator</div>
+            <div class="column">Evaluation</div>
+            <div class="column">Indicator</div>
+            <div class="column">Evaluation</div>
+          </div>
+          <div class="columns">
+            <div class="column">PPO</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d15"></div>
+            <div class="column">PPO Histo</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d16"></div>
+            <div class="column">RSI 14</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d17"></div>
+            <div class="column">RSI 5</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d18"></div>
+          </div>
+          <div class="columns">
+            <div class="column">CCI 50</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d19"></div>
+            <div class="column">CCI 14</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d20"></div>
+            <div class="column">EMA 34</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d21"></div>
+            <div class="column">SAR</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d22"></div>
+          </div>
+          <div class="columns">
+            <div class="column">%K</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d23"></div>
+            <div class="column">%D</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d24"></div>
+            <div class="column">%R</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d25"></div>
+            <div class="column">APO</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d26"></div>
+          </div>
+          <div class="columns">
+            <div class="column">SMA 10</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d27"></div>
+            <div class="column">BSI</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d28"></div>
+            <div class="column">BSI MA</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id="d29"></div>
+            <div class="column">&nbsp;</div>
+            <div class="column"><input class="input" type="text" placeholder="Value" id=""></div>
+          </div>
+
+
+        </div>
+        <!--end of container.is-fluid-->
+      </div><!-- box end -->
+
+    </div>
+  </div>
+  <!-- End Daily-->
+
+  <!-- Comments -->
+  <span class="tag is-info is-large">Comments</span>
+  <div class="box">
+    <div class="container is-fluid">
+      <div class="columns">
+        <div class="column">
+          <textarea name="" id="comments" cols="30" rows="10" class="textarea" placeholder="Comments"></textarea>
+        </div>
+      </div><!-- end of columns -->
+    </div> <!-- end of container.is-fluid-->
+  </div><!-- end of box -->
+  <!-- End of Comments-->
+
+
+  <!-- Results -->
+  <span class="tag is-success is-large">Results</span>
+  <div class="box">
+    <div class="container is-fluid">
+      <div class="columns">
+        <div class="column is-one-third">&nbsp</div>
+        <div class="column is-one-third">
+          <center><button class="button" onclick="generateClicked()">GENERATE</button></center>
+        </div>
+        <div class="column is-one-third">&nbsp</div>
+      </div>
+      <div class="columns"><i class="far fa-copy" id="copyTitle" onClick="copyText(this.id)"></i>&nbsp;<textarea name="" id="titleBox" cols="30" rows="1" class="textarea" placeholder="Title"></textarea>&nbsp;</div>
+      <div class="columns">&nbsp;</div>
+      <div class="columns"><i class="far fa-copy" id="copyBody" onClick="copyText(this.id)"></i>&nbsp;<textarea name="" id="bodyBox" cols="30" rows="20" class="textarea" placeholder="Message"></textarea>&nbsp;</div>
+    </div><!-- end of container.is-fluid-->
+  </div><!-- end of box -->
+  <script src="scripts/UI.js" type="text/javascript"></script>
+  <script src="scripts/ATRx.js" type="text/javascript"></script>
+  <script src="scripts/averages.js" type="text/javascript"></script>
+  <script src="scripts/BSI.js" type="text/javascript"></script>
+  <script src="scripts/CCI.js" type="text/javascript"></script>
+  <script src="scripts/HMA.js" type="text/javascript"></script>
+  <script src="scripts/JSONMessage.js" type="text/javascript"></script>
+  <script src="scripts/ppo.js" type="text/javascript"></script>
+  <script src="scripts/RSI.js" type="text/javascript"></script>
+  <script src="scripts/SAR.js" type="text/javascript"></script>
+  <script src="scripts/Stochastic.js" type="text/javascript"></script>
+  <script src="scripts/trend.js" type="text/javascript"></script>
+  <script src="scripts/Indicators.js" type="text/javascript"></script>
+  <script src="scripts/BuildMessage.js" type="text/javascript"></script>
+  <script src="scripts/willR.js" type="text/javascript"></script>
+  <script src="scripts/Strategy.js" type="text/javascript"></script>
+  <script src="scripts/test.js" type="text/javascript"></script>
+  <script src="scripts/PriceProjection.js" type="text/javascript"></script>
+  <script src="scripts/ConfirmEntryExit.js" type="text/javascript"></script>
+  <script src="scripts/StopSuggestions.js" type="text/javascript"></script>
+  <script src="scripts/PriceAction.js" type="text/javascript"></script>
+  <script src="scripts/StandardDeviation.js" type="text/javascript"></script>
+
+
+
+
+</body>
+
+</html>
