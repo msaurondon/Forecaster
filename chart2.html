@@ -7,8 +7,11 @@
   <title>Document</title>
   <script type="text/javascript">
     function collectJSON(){
+      var tickerSymbol = document.getElementById("symbol").value;
       var xmlhttp= new XMLHttpRequest();
-      xmlhttp.open("GET","https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo",false);
+      var url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="+tickerSymbol+"&apikey=SKY2KIZNAU91P983"
+      console.log(url);
+      xmlhttp.open("GET",url,false);
       xmlhttp.send();
       if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
         var result = xmlhttp.responseText;
@@ -18,7 +21,11 @@
         symbol(metaData);
         ATR(stockData);
         SMA(stockData,21);
+        SMA(stockData,13);
+        SMA(stockData,8);
         SMAhl2(stockData,21);
+        SMAhl2(stockData,13);
+        SMAhl2(stockData,8);
         prices(stockData);
         //document.write("<div>Meta Data:</div><div>" + JSON.stringify(metaData) + "</div>");
         //document.write("<div>Data:</div><div>" +JSON.stringify(stockData)+"</div>");
@@ -72,17 +79,25 @@
       var counter = 0;
       var sum = 0;
       var sma = 0;
+      var firstDate;
       for (x in jsonMSG){
         var date = Object.keys(jsonMSG)[counter];
-          if(counter <= timeframe){
-            sum += parseInt(jsonMSG[date]["4. close"]);
+          if(counter < timeframe){
+            sum += parseFloat(jsonMSG[date]["4. close"]);
           } else {
             break;
           }
+          if(counter === 0 ){ firstDate = date;}
           counter++;
       }
       sma = parseFloat(sum)/parseInt(timeframe);
-      document.write("<h2> Trend SMA: " +sma + "</h2>");
+      document.write("<h2> " + timeframe +" SMA: " +sma + "</h2>");
+      if(jsonMSG[firstDate]["4. close"] > sma)
+      {
+        document.write("<h3>Prices are bullish against the " + timeframe +" SMA</h3>");
+      }else {
+        document.write("<h3>Prices are bearish against the " + timeframe +" SMA</h3>");
+      }
     }
 
     function SMAhl2(jsonMSG, timeframe){
@@ -91,20 +106,28 @@
       var sma = 0;
       for (x in jsonMSG){
         var date = Object.keys(jsonMSG)[counter];
-          if(counter <= timeframe){
+          if(counter < timeframe){
             sum += (parseFloat(jsonMSG[date]["2. high"]) + parseFloat(jsonMSG[date]["3. low"]))/2;
           } else {
             break;
           }
+          if(counter === 0 ){ firstDate = date;}
           counter++;
       }
       sma = parseFloat(sum)/parseInt(timeframe);
-      document.write("<h2> Trend SMAhl2: " +sma + "</h2>");
+      document.write("<h2> " + timeframe +" SMAhl2: " +sma + "</h2>");
+      if(jsonMSG[firstDate]["4. close"] > sma)
+      {
+        document.write("<h3>Prices are bullish against the " + timeframe +" SMA</h3>");
+      }else {
+        document.write("<h3>Prices are bearish against the " + timeframe +" SMA</h3>");
+      }
     }
 
   </script>
 </head>
 <body>
+  <input type="text" placeholder="IBM" id="symbol">
 <button id="btnClick" onClick="collectJSON();">Collect</button>
 </body>
 </html>
