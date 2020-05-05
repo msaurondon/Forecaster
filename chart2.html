@@ -26,7 +26,8 @@
         SMAhl2(stockData,21);
         SMAhl2(stockData,13);
         SMAhl2(stockData,8);
-        prices(stockData);
+        document.close();
+        //prices(stockData);
         //document.write("<div>Meta Data:</div><div>" + JSON.stringify(metaData) + "</div>");
         //document.write("<div>Data:</div><div>" +JSON.stringify(stockData)+"</div>");
       }
@@ -34,6 +35,8 @@
 
     function symbol(jsonMSG){
       var symbol = jsonMSG["2. Symbol"];
+      document.write('<input type="text" placeholder="IBM" id="symbol">');
+      document.write('<button id="btnClick" onClick="collectJSON();">Collect</button>');
       document.write("<h1>"+ symbol +"</h1>");
 
 
@@ -48,11 +51,6 @@
 
         counter++;
       }
-      //document.write(Object.keys(jsonMSG));
-      // for(x in jsonMSG){
-      //   var date = Object.keys(jsonMSG[x]);
-      //   document.write("<br>: "+JSON.stringify(jsonMSG));
-      // }
     }
 
     function ATR(jsonMSG){
@@ -72,7 +70,7 @@
       }
 
       atr = sum/21;
-      document.write("<h1>ATR: " + atr + "</h1>");
+      document.write("<h1>ATR: " + parseFloat(atr).toFixed(2) + "</h1>");
     }
 
     function SMA(jsonMSG, timeframe){
@@ -91,12 +89,42 @@
           counter++;
       }
       sma = parseFloat(sum)/parseInt(timeframe);
-      document.write("<h2> " + timeframe +" SMA: " +sma + "</h2>");
+      document.write("<h2> " + timeframe +" SMA: " + parseFloat(sma).toFixed(2) + "</h2>");
       if(jsonMSG[firstDate]["4. close"] > sma)
       {
         document.write("<h3>Prices are bullish against the " + timeframe +" SMA</h3>");
+        switch(timeframe){
+          case 21:
+          document.write("<h4>Long Positions Only</h4>");
+          break;
+          case 13:
+          document.write("<h4>If trend BULL - preprare to enter long</h4>");
+          document.write("<h4>If trend BEAR - Cover short.");
+          break;
+          case 8:
+          document.write("<h4>If trend BULL - go LONG</h4>");
+          document.write("<h4>If trend BEAR - prepare to cover short.");
+          break;
+          default:
+          break;
+        }
       }else {
         document.write("<h3>Prices are bearish against the " + timeframe +" SMA</h3>");
+        switch(timeframe){
+          case 21:
+          document.write("<h4>Short Positions Only</h4>");
+          break;
+          case 13:
+          document.write("<h4>If trend BULL - close/cover the position</h4>");
+          document.write("<h4>If trend BEAR - prepare to enter short.");
+          break;
+          case 8:
+          document.write("<h4>If trend BULL - prepare to cover short</h4>");
+          document.write("<h4>If trend BEAR - enter short.</h4>");
+          break;
+          default:
+          break;
+        }
       }
     }
 
@@ -115,7 +143,7 @@
           counter++;
       }
       sma = parseFloat(sum)/parseInt(timeframe);
-      document.write("<h2> " + timeframe +" SMAhl2: " +sma + "</h2>");
+      document.write("<h2> " + timeframe +" SMAhl2: " + parseFloat(sma).toFixed(2) + "</h2>");
       if(jsonMSG[firstDate]["4. close"] > sma)
       {
         document.write("<h3>Prices are bullish against the " + timeframe +" SMA</h3>");
@@ -127,7 +155,7 @@
   </script>
 </head>
 <body>
-  <input type="text" placeholder="IBM" id="symbol">
+<input type="text" placeholder="IBM" id="symbol">
 <button id="btnClick" onClick="collectJSON();">Collect</button>
 </body>
 </html>
