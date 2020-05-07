@@ -92,16 +92,16 @@ function summarizeCCI(msg) {
   return msg;
 }
 
-function buildCCISuggestion(msg){
+function buildCCISuggestion(msg) {
   var message = '\n\nThe CCI indicator trading strategy suggest the following:'
-  if(msg.month.timePeriod=='M'){
-    message+=`\nMonthly: ${msg.month.cciTrend} - ${msg.month.cciSummary}.`;
+  if (msg.month.timePeriod == 'M') {
+    message += `\nMonthly: ${msg.month.cciTrend} - ${msg.month.cciSummary}.`;
   }
-  if(msg.week.timePeriod=='W'){
-    message+=`\nWeekly: ${msg.week.cciTrend} - ${msg.week.cciSummary}.`;
+  if (msg.week.timePeriod == 'W') {
+    message += `\nWeekly: ${msg.week.cciTrend} - ${msg.week.cciSummary}.`;
   }
-  if(msg.day.timePeriod=='D'){
-    message+=`\nDaily: ${msg.day.cciTrend} - ${msg.day.cciSummary}.`;
+  if (msg.day.timePeriod == 'D') {
+    message += `\nDaily: ${msg.day.cciTrend} - ${msg.day.cciSummary}.`;
   }
 
   return message;

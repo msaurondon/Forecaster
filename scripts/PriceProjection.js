@@ -32,36 +32,34 @@ function buildProjectionMessage(msg) {
     lastprice = msg.lastprice;
     atr = msg.atr;
     ma21 = msg.ma21;
-    message += setPriceProjection(single, first, second, lastprice, atr, ma21,'months');
+    message += setPriceProjection(single, first, second, lastprice, atr, ma21, 'months');
     //if (parseInt(single).toFixed(2) > 0.0 == 0 && parseInt(first).toFixed(2) > 0.0) message += "Prices are not currently generating projection signals.";
-  }
-  else if (msg.timePeriod == 'W') {
+  } else if (msg.timePeriod == 'W') {
     single = msg.ppSingle;
     first = msg.ppFirst;
     second = msg.ppSecond;
     lastprice = msg.lastprice;
     atr = msg.atr;
     ma21 = msg.ma21;
-    message += setPriceProjection(single, first, second, lastprice, atr, ma21,'weeks');
+    message += setPriceProjection(single, first, second, lastprice, atr, ma21, 'weeks');
     //if (parseInt(single).toFixed(2) > 0.0 == 0 && parseInt(first).toFixed(2) > 0.0) message += "Prices are not currently generating projection signals.";
-  }
-  else if (msg.timePeriod == 'D') {
+  } else if (msg.timePeriod == 'D') {
     single = msg.ppSingle;
     first = msg.ppFirst;
     second = msg.ppSecond;
     lastprice = msg.lastprice;
     atr = msg.atr;
     ma21 = msg.ma21;
-    message += setPriceProjection(single, first, second, lastprice, atr, ma21,'days');
+    message += setPriceProjection(single, first, second, lastprice, atr, ma21, 'days');
   }
 
 
   return message;
 }
 
-function setPriceProjection(single, first, second, lastprice, atr, ma21, tradePeriod){
+function setPriceProjection(single, first, second, lastprice, atr, ma21, tradePeriod) {
   let message = '';
-  if (!(parseInt(single).toFixed(2) > 0.0)  && !(parseInt(first).toFixed(2) > 0.0)) message += "Prices are not currently generating projection signals.";
+  if (!(parseInt(single).toFixed(2) > 0.0) && !(parseInt(first).toFixed(2) > 0.0)) message += "Prices are not currently generating projection signals.";
   else if (parseInt(first).toFixed(2) > 0.0) {
     message += `Price currently displays (if strength and attitude continue) a desire to move first toward ${first} before moving toward ${second}`;
   } else if (parseInt(single).toFixed(2) > 0.0) {

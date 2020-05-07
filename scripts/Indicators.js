@@ -23,13 +23,13 @@ function summarizeIndicators(msg) {
 
 function buildIndicators(msg) {
   var message = '\n\nIndicators Summary.\nA collection of technical indicators whose directional attitude has been summarized.';
-  if(msg.month.timePeriod=='M'){
+  if (msg.month.timePeriod == 'M') {
     message += `\nMonthly: ${msg.month.indicatorSummary}`;
   }
-  if(msg.week.timePeriod=='W'){
+  if (msg.week.timePeriod == 'W') {
     message += `\nWeekly: ${msg.week.indicatorSummary}`;
   }
-  if(msg.day.timePeriod=='D'){
+  if (msg.day.timePeriod == 'D') {
     message += `\nDaily: ${msg.day.indicatorSummary}`;
   }
 
