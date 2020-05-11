@@ -15,7 +15,8 @@ const swiftMsg = {
   priceTarget: 0,
   stops: '',
   hmaHighAdder: 0,
-  hmaLowAdder: 0
+  hmaLowAdder: 0,
+  howLong: 1
 }
 
 let message = swiftMsg;
@@ -43,7 +44,7 @@ function build() {
   takeProfitTarget();
   hmaCalculation();
   stops();
-
+  howLong();
   title();
   body();
 };
@@ -131,6 +132,7 @@ function body() {
     output += `\nPrices are consolidating between ${message.consolL} - ${message.consolH}.`;
   }
   output += `\nIf strength and trend continue, ${message.symbol} is trying to reach ${parseFloat(message.priceTarget).toFixed(2)}.`;
+  output += `\nIt could take between ${message.howLong} to ${message.howLong * 2} trade periods to reach the projection.`;
   output += `\n${message.stops}`;
   if (document.getElementById("comments").value.length > 0) {
     output += `\n\n------Additional Comments:`
@@ -208,4 +210,13 @@ function validateHMAdd() {
     if (message.hmaDD > 5) message.hmaDD--;
     if (message.hmaDD < 4) message.hmaDD++;
   }
+}
+
+function howLong(){
+  var distance = parseFloat(message.priceTarget ) - parseFloat(message.trendMA);
+  var time = parseFloat(distance) / parseFloat(message.atr);
+  var time = Math.abs(time);
+  if(time > 1) message.howLong = parseInt(time);
+
+
 }
