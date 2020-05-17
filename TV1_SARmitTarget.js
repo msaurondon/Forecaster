@@ -166,15 +166,19 @@ if change(trend) > 0
         gap := low[0] - high[1]
         mode := mode + '2'
         if high[0] > high[1] and low[0] < low[1] // engulfing bar
-            if close[0] < high[1] and close[0] > low[1] // close between yesterdays values
-                if close[0] < close[1]
-                    target := close[0] - (diff1 * .618)
-                else
+            if not bullConsolidation
+                mode := mode + '-'
+                if close[0] < high[1] and close[0] > low[1] // close between yesterdays values
+                    if close[0] < close[1]
+                        target := close[0] - (diff1 * .618)
+                    else
+                        target := close[0] + (diff1 * .618)
+                if close[0] < low[1]
+                    target := close[0] - (diff1 * 1.618)
+                if close[0] > high[1]
                     target := close[0] + (diff1 * .618)
-            if close[0] < low[1]
-                target := close[0] - (diff1 * 1.618)
-            if close[0] > high[1]
-                target := close[0] + (diff1 * .618)
+            if bullConsolidation
+                mode := mode + '+'
 
     if close[0] > trendMA[0] and close[1] < trendMA[1] // (3) close today is above and yesterday is below trend line
         diff1 := high[0] - low[1] // range for bullish calculation
@@ -370,15 +374,28 @@ if change(trend) < 0
         mode := mode + '2'
         if high[0] >= high[1] and low[0] <= low[1] // (a) engfulfing bar
             mode := mode + 'a'
-            if close[0] < high[1] and close[0] > low[1] // close between yesterdays value
-                if close[0] < close[1] // consolidation with trend
+            if bearConsolidation
+                mode := mode + '+'
+                if close[0] < high[1] and close[0] > low[1] // close between yesterdays value
+                    if close[0] < close[1] // consolidation with trend
+                        target := close[0] - (diff1 * .618)
+                    if close[0] > close[1] // consolidation against trend
+                        target := close[0] + (diff1 * .382)
+                if close[0] < low[1]
                     target := close[0] - (diff1 * .618)
-                if close[0] > close[1] // consolidation against trend
+                if close[0] > high[1]
                     target := close[0] + (diff1 * .382)
-            if close[0] < low[1]
-                target := close[0] - (diff1 * 1.618)
-            if close[0] > high[1]
-                target := close[0] + (diff1 * .618)
+            if not bearConsolidation
+                mode := mode + '-'
+                if close[0] < high[1] and close[0] > low[1] // close between yesterdays value
+                    if close[0] < close[1] // consolidation with trend
+                        target := close[0] - (diff1 * .618)
+                    if close[0] > close[1] // consolidation against trend
+                        target := close[0] + (diff1 * .382)
+                if close[0] < low[1]
+                    target := close[0] - (diff1 * 1.618)
+                if close[0] > high[1]
+                    target := close[0] + (diff1 * .618)
         if high[1] > high[0] and low[1] > low[0] // (b) transition
             mode := mode + 'b'
             if not bearConsolidation
