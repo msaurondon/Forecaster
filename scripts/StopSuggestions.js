@@ -14,7 +14,7 @@ function suggestedStops(msg) {
 
 function determineStops(msg) {
 
-  var atr = msg.atr;
+  var atr = msg.atr.toFixed(2);
   var sar = parseFloat(msg.sar).toFixed(2);
   var lastprice = msg.lastprice;
   var ma21 = msg.ma21;
@@ -33,7 +33,7 @@ function determineStops(msg) {
     var atrStop = parseFloat(lastprice).toFixed(2) - parseFloat(stopAtr).toFixed(2);
     if (msg.timePeriod == "M") {
       output = '\nSuggested stops based on long positions on the monthly chart: ';
-      if (sar < lastprice) output += '\nSAR value at: ' + sar;
+      if (sar < lastprice) output += '\nSAR value at: ' + sar.toFixed(2);
       if (consolDD == 1 || consolDD == 4) {
 
         output += `\nIn consolidation and bullish (Consolidation Low - (ATR * .5)): ${breakLow}`;
