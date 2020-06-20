@@ -14,7 +14,7 @@ function suggestedStops(msg) {
 
 function determineStops(msg) {
 
-  var atr = msg.atr.toFixed(2);
+  var atr = parseFloat(msg.atr).toFixed(2);
   var sar = parseFloat(msg.sar).toFixed(2);
   var lastprice = msg.lastprice;
   var ma21 = msg.ma21;

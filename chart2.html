@@ -76,6 +76,20 @@
       document.write("<h1>ATR: " + parseFloat(atr).toFixed(2) + "</h1>");
     }
 
+    function fetchSMAData(jsonObj,type){
+      switch(type){
+        case "close":
+          return parseFloat(jsonObj["4. close"]);
+          break;
+        case "hl2":
+          return (parseFloat(jsonObj["2. high"]) + parseFloat(jsonObj["3. low"]))/2;
+        default:
+          return parseFloat(jsonObj["4. close"]);
+          break;
+      }
+
+    }
+
     function SMA(jsonMSG, timeframe) {
       var counter = 0;
       var sum = 0;
@@ -84,7 +98,7 @@
       for (x in jsonMSG) {
         var date = Object.keys(jsonMSG)[counter];
         if (counter < timeframe) {
-          sum += parseFloat(jsonMSG[date]["4. close"]);
+          sum += fetchSMAData(jsonMSG[date],"hl2");
         } else {
           break;
         }
