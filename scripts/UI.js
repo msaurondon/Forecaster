@@ -4,7 +4,11 @@ const checkedTimeframe = {
   daily: false,
   swift: false
 };
-const masterMessage = { month: "", week: "", day: "" };
+const masterMessage = {
+  month: "",
+  week: "",
+  day: ""
+};
 var message = masterMessage;
 
 function copyText(clickedID) {

@@ -5,26 +5,26 @@ function buildConfirmSuggestion(msg) {
   var output = "\n\nConfirmation Signal\n6 indicators combined to confirm entry/exit.";
 
 
-  if(msg.month.timePeriod == "M"){
+  if (msg.month.timePeriod == "M") {
     bull = msg.month.confirmSummary.Bull;
     bear = msg.month.confirmSummary.Bear;
     output += "\nMonthly " + confirmMessage(bear, bull, msg.month.lastprice, msg.month.ma21);
   }
-  if(msg.week.timePeriod == "W"){
+  if (msg.week.timePeriod == "W") {
     bull = msg.week.confirmSummary.Bull;
     bear = msg.week.confirmSummary.Bear;
-    output += "\nWeekly " +confirmMessage(bear, bull, msg.week.lastprice, msg.week.ma21);
+    output += "\nWeekly " + confirmMessage(bear, bull, msg.week.lastprice, msg.week.ma21);
   }
-  if(msg.day.timePeriod == "D"){
+  if (msg.day.timePeriod == "D") {
     bull = msg.day.confirmSummary.Bull;
     bear = msg.day.confirmSummary.Bear;
-    output += "\nDaily " +confirmMessage(bear, bull, msg.day.lastprice, msg.day.ma21);
+    output += "\nDaily " + confirmMessage(bear, bull, msg.day.lastprice, msg.day.ma21);
   }
 
   return output;
 }
 
-function confirmMessage(bear, bull, lastprice, ma21){
+function confirmMessage(bear, bull, lastprice, ma21) {
 
   var direction = 'Bearish -';
   var message = '';
@@ -34,7 +34,7 @@ function confirmMessage(bear, bull, lastprice, ma21){
     direction = 'Bullish -';
     confirm = (Math.round(bull) / 6).toFixed(4);
   }
-  console.log("confirm: "+ confirm);
+  console.log("confirm: " + confirm);
   if (confirm > .83) {
     direction += ' Open directional trades';
   }

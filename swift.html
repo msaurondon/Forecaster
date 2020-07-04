@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,88 +13,112 @@
 
 
 <body>
-<span class="tag is-info is-large">Swift Analysis</span>
-<div class="box">
-  <div class="container is-fluid">
-    <div class="columns">
-      <div class="column">&nbsp;</div>
-      <div class="column is-one-quarter"><input class="input" type="text" id="s1" placeholder="Date Ending"></div>
-      <div class="column is-one-quarter"><input class="input" type="text" id="s2" placeholder="Symbol"></div>
-      <div class="column is-one-quarter"><input class="input" type="text" id="s3" placeholder="Trend MA"></div>
-      <div class="column">&nbsp;</div>
-    </div>
-    <div class="columns">
-      <div class="column">&nbsp;</div>
-      <div class="column is-one-quarter"><input class="input" type="text" id="s4" placeholder="High"></div>
-      <div class="column is-one-quarter"><input class="input" type="text" id="s5" placeholder="Low"></div>
-      <div class="column is-one-quarter"><input class="input" type="text" id="s6" placeholder="Close"></div>
-      <div class="column">&nbsp;</div>
-    </div>
-    <div class="columns">
-      <div class="column">&nbsp;</div>
-      <div class="column is-one-quarter"><input class="input" type="text" id="s7" placeholder="ATR"></div>
-      <div class="column is-one-quarter"><input class="input" type="text" id="s8" placeholder="SAR"></div>
-      <div class="column is-one-quarter">HMA
-        <div class="select">
-          <select name="HMA" id="s9">
-            <option value="8">Very Strong Bull</option>
-            <option value="7">Strong Bull</option>
-            <option value="6">Bull</option>
-            <option value="5">Neutral Bull</option>
-            <option value="4">Neutral Bear</option>
-            <option value="3">Bear</option>
-            <option value="2">Strong Bear</option>
-            <option value="1">Very Strong Bear</option>
-          </select>
-        </div><!-- End of DIV.SELECT -->
+  <span class="tag is-info is-large">Swift Analysis</span>
+  <div class="box">
+    <div class="container is-fluid">
+      <div class="columns">
+        <div class="column">&nbsp;</div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="s1" placeholder="Date Ending"></div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="s2" placeholder="Symbol"></div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="s3" placeholder="Trend MA"></div>
+        <div class="column">&nbsp;</div>
       </div>
-      <div class="column">&nbsp;</div>
-    </div>
-    <div class="columns">
-      <div class="column">&nbsp;</div>
-      <div class="column is-one-quarter"><input class="input" type="text" id="s10" placeholder="Consolidation High"></div>
-      <div class="column is-one-quarter"><input class="input" type="text" id="s11" placeholder="Consolidation Low"></div>
-      <div class="column is-one-quarter"><input class="input" type="text" id="s12" placeholder="Price Projection"></div>
-      <div class="column">&nbsp;</div>
+      <div class="columns">
+        <div class="column">&nbsp;</div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="s4" placeholder="High"></div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="s5" placeholder="Low"></div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="s6" placeholder="Close" onfocusout="priceProjection()"></div>
+        <div class="column">&nbsp;</div>
+      </div>
+      <div class="columns">
+        <div class="column">&nbsp;</div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="s7" placeholder="ATR"></div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="s8" placeholder="SAR"></div>
+        <div class="column is-one-quarter">HMA
+          <div class="select">
+            <select name="HMA" id="s9">
+              <option value="8">Very Strong Bull</option>
+              <option value="7">Strong Bull</option>
+              <option value="6">Bull</option>
+              <option value="5">Neutral Bull</option>
+              <option value="4">Neutral Bear</option>
+              <option value="3">Bear</option>
+              <option value="2">Strong Bear</option>
+              <option value="1">Very Strong Bear</option>
+            </select>
+          </div><!-- End of DIV.SELECT -->
+        </div>
+        <div class="column">&nbsp;</div>
+      </div>
+      <div class="columns">
+        <div class="column">&nbsp;</div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="s10" placeholder="Consolidation High"></div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="s11" placeholder="Consolidation Low"></div>
+        <div class="column is-one-quarter"><input class="input" type="text" id="s12" placeholder="Price Projection"></div>
+        <div class="column">&nbsp;</div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Comments -->
-<span class="tag is-info is-large">Comments</span>
-<div class="box">
-  <div class="container is-fluid">
-    <div class="columns">
-      <div class="column">
-        <textarea name="" id="comments" cols="30" rows="10" class="textarea" placeholder="Comments"></textarea>
+  <!-- Comments -->
+  <span class="tag is-info is-large">Comments</span>
+  <div class="box">
+    <div class="container is-fluid">
+      <div class="columns">
+        <div class="column">
+          <textarea name="" id="comments" cols="30" rows="10" class="textarea" placeholder="Comments"></textarea>
+        </div>
+      </div><!-- end of columns -->
+    </div> <!-- end of container.is-fluid-->
+  </div><!-- end of box -->
+  <!-- End of Comments-->
+
+
+  <!-- Results -->
+  <span class="tag is-success is-large">Results</span>
+  <div class="box">
+    <div class="container is-fluid">
+      <div class="columns">
+        <div class="column is-one-third">&nbsp</div>
+        <div class="column is-one-third">
+          <center><button class="button" onclick="generateClicked()">GENERATE</button></center>
+        </div>
+        <div class="column is-one-third">&nbsp</div>
       </div>
-    </div><!-- end of columns -->
-  </div> <!-- end of container.is-fluid-->
-</div><!-- end of box -->
-<!-- End of Comments-->
+      <div class="columns"><i class="far fa-copy" id="copyTitle" onClick="copyText(this.id)"></i>&nbsp;<textarea name="" id="titleBox" cols="30" rows="1" class="textarea" placeholder="Title"></textarea>&nbsp;</div>
+      <div class="columns">&nbsp;</div>
+      <div class="columns"><i class="far fa-copy" id="copyBody" onClick="copyText(this.id)"></i>&nbsp;<textarea name="" id="bodyBox" cols="30" rows="20" class="textarea" placeholder="Message"></textarea>&nbsp;</div>
+    </div><!-- end of container.is-fluid-->
+  </div><!-- end of box -->
+  <script src="scripts/swift.js" type="text/javascript">
+    >
+  </script>
+  <script type="text/javascript">
+    function generateClicked() {
+      let swift = new Swift();
+    }
 
-
-<!-- Results -->
-<span class="tag is-success is-large">Results</span>
-<div class="box">
-  <div class="container is-fluid">
-    <div class="columns">
-      <div class="column is-one-third">&nbsp</div>
-      <div class="column is-one-third">
-        <center><button class="button" onclick="generateClicked()">GENERATE</button></center>
-      </div>
-      <div class="column is-one-third">&nbsp</div>
-    </div>
-    <div class="columns"><i class="far fa-copy" id="copyTitle" onClick="copyText(this.id)"></i>&nbsp;<textarea name="" id="titleBox" cols="30" rows="1" class="textarea" placeholder="Title"></textarea>&nbsp;</div>
-    <div class="columns">&nbsp;</div>
-    <div class="columns"><i class="far fa-copy" id="copyBody" onClick="copyText(this.id)"></i>&nbsp;<textarea name="" id="bodyBox" cols="30" rows="20" class="textarea" placeholder="Message"></textarea>&nbsp;</div>
-  </div><!-- end of container.is-fluid-->
-</div><!-- end of box -->
-<script src="scripts/swift.js" type="text/javascript">></script>
-<script type="text/javascript">
-  function generateClicked(){
-    let swift = new Swift();
-  }
-</script>
+    function copyText(clickedID) {
+      if (clickedID == "copyTitle") {
+        var titleText = document.getElementById("titleBox");
+        titleText.select();
+        try {
+          var success = document.execCommand("copy");
+        } catch (err) {
+          console.log("Failure to copy title");
+        }
+      } else if (clickedID == "copyBody") {
+        var bodyText = document.getElementById("bodyBox");
+        bodyText.select();
+        try {
+          var success = document.execCommand("copy");
+        } catch (err) {
+          console.log("Failure to copy body");
+        }
+      }
+      //buildJSON('monthly');
+    }
+  </script>
 </body>
+
 </html>

@@ -4,7 +4,12 @@ function summarizeTrend(msg) {
   var ma8 = 0;
 
   if (msg.lastprice > msg.ma21) ma21 = 1;
-  if (msg.lastprice > msg.ma13) {ma13 = 1; msg.confirmSummary.Bull++;} else {msg.confirmSummary.Bear++;}
+  if (msg.lastprice > msg.ma13) {
+    ma13 = 1;
+    msg.confirmSummary.Bull++;
+  } else {
+    msg.confirmSummary.Bear++;
+  }
   if (msg.lastprice > msg.ma8) ma8 = 1;
 
   var summary =
@@ -12,7 +17,7 @@ function summarizeTrend(msg) {
     Math.abs(parseInt(ma13) * 2) +
     Math.abs(parseInt(ma8) * 1);
 
-    console.log("trend summary: "+summary);
+  console.log("trend summary: " + summary);
   switch (summary) {
     case 6:
       msg.trendSummary = "long positions";

@@ -26,12 +26,16 @@ const jsonTestMSG = {
   sar: 32.97,
   k: 53.61,
   d: 53.92,
-  r:-83.81,
+  r: -83.81,
   apo: -.38,
   sma10: 29.06,
   bsi: -6.24,
   bsima: -6.58,
-  indicatorCounter: { Bull: 0, Bear: 0, Neutral: 0 },
+  indicatorCounter: {
+    Bull: 0,
+    Bear: 0,
+    Neutral: 0
+  },
   hmaHighAdder: "",
   hmaLowAdder: "",
   trendSummary: "",
@@ -46,72 +50,86 @@ const jsonTestMSG = {
   sma10Summary: "",
   kSummary: "",
   dSummary: "",
-  rSummary:"",
+  rSummary: "",
   bsiSummary: "",
   bsiMASummary: "",
   atrxSummary: "",
   indicatorSummary: "",
-  confirmSummary:{ Bull: 0, Bear: 0, Neutral: 0 },
+  confirmSummary: {
+    Bull: 0,
+    Bear: 0,
+    Neutral: 0
+  },
   disposition: "",
   strategyOne: "",
-  timePeriod: ""}
+  timePeriod: ""
+}
 
-  const jsonTest2MSG = {
-    datadate: "21 April 2020",
-    symbol: "DJI",
-    lastprice: 23018.9,
-    hmaDD: 4,
-    atr: 740.1,
-    atrX: .01,
-    ma21: 22331,
-    ma13: 23049.9,
-    ma8: 23615.5,
-    ppSingle: 22561.08,
-    ppFirst: "",
-    ppSecond: "",
-    stddevH: 24380.9,
-    stddevL: 21656.8,
-    consolDD: 1,
-    consolH: 24264.2,
-    consolL: 21693.6,
-    ppo: .3,
-    ppoH: 1.4,
-    rsi14: 50.08,
-    rsi5: 42.73,
-    cci50: -30.01,
-    cci14: 14.69,
-    ema34: 23386.1,
-    sar: 19315.7,
-    k: 82.24,
-    d: 86.83,
-    r:-94.18,
-    apo: 14.1,
-    sma10: 23510.1,
-    bsi: 127.6,
-    bsima: 366.3,
-    indicatorCounter: { Bull: 0, Bear: 0, Neutral: 0 },
-    hmaHighAdder: "",
-    hmaLowAdder: "",
-    trendSummary: "",
-    ppoSummary: "",
-    cciTrend: "",
-    cciSummary: "",
-    bullRSISummary: "",
-    bearRSISummary: "",
-    RSI5Summary: "",
-    SARSummary: "",
-    APOSummary: "",
-    sma10Summary: "",
-    kSummary: "",
-    dSummary: "",
-    rSummary:"",
-    bsiSummary: "",
-    bsiMASummary: "",
-    atrxSummary: "",
-    indicatorSummary: "",
-    confirmSummary:{ Bull: 0, Bear: 0, Neutral: 0 },
-    disposition: "",
-    timePeriod: ""}
+const jsonTest2MSG = {
+  datadate: "21 April 2020",
+  symbol: "DJI",
+  lastprice: 23018.9,
+  hmaDD: 4,
+  atr: 740.1,
+  atrX: .01,
+  ma21: 22331,
+  ma13: 23049.9,
+  ma8: 23615.5,
+  ppSingle: 22561.08,
+  ppFirst: "",
+  ppSecond: "",
+  stddevH: 24380.9,
+  stddevL: 21656.8,
+  consolDD: 1,
+  consolH: 24264.2,
+  consolL: 21693.6,
+  ppo: .3,
+  ppoH: 1.4,
+  rsi14: 50.08,
+  rsi5: 42.73,
+  cci50: -30.01,
+  cci14: 14.69,
+  ema34: 23386.1,
+  sar: 19315.7,
+  k: 82.24,
+  d: 86.83,
+  r: -94.18,
+  apo: 14.1,
+  sma10: 23510.1,
+  bsi: 127.6,
+  bsima: 366.3,
+  indicatorCounter: {
+    Bull: 0,
+    Bear: 0,
+    Neutral: 0
+  },
+  hmaHighAdder: "",
+  hmaLowAdder: "",
+  trendSummary: "",
+  ppoSummary: "",
+  cciTrend: "",
+  cciSummary: "",
+  bullRSISummary: "",
+  bearRSISummary: "",
+  RSI5Summary: "",
+  SARSummary: "",
+  APOSummary: "",
+  sma10Summary: "",
+  kSummary: "",
+  dSummary: "",
+  rSummary: "",
+  bsiSummary: "",
+  bsiMASummary: "",
+  atrxSummary: "",
+  indicatorSummary: "",
+  confirmSummary: {
+    Bull: 0,
+    Bear: 0,
+    Neutral: 0
+  },
+  disposition: "",
+  timePeriod: ""
+}
 
 function buildJSON(timeframe) {
   const monthlyDataID = {
@@ -244,12 +262,16 @@ function buildJSON(timeframe) {
     sar: "",
     k: "",
     d: "",
-    r:"",
+    r: "",
     apo: "",
     sma10: "",
     bsi: "",
     bsima: "",
-    indicatorCounter: { Bull: 0, Bear: 0, Neutral: 0 },
+    indicatorCounter: {
+      Bull: 0,
+      Bear: 0,
+      Neutral: 0
+    },
     hmaHighAdder: "",
     hmaLowAdder: "",
     trendSummary: "",
@@ -264,12 +286,16 @@ function buildJSON(timeframe) {
     sma10Summary: "",
     kSummary: "",
     dSummary: "",
-    rSummary:"",
+    rSummary: "",
     bsiSummary: "",
     bsiMASummary: "",
     atrxSummary: "",
     indicatorSummary: "",
-    confirmSummary:{ Bull: 0, Bear: 0, Neutral: 0 },
+    confirmSummary: {
+      Bull: 0,
+      Bear: 0,
+      Neutral: 0
+    },
     disposition: "",
     timePeriod: ""
   };
@@ -361,8 +387,12 @@ function setJSON(msg, idSet) {
   msg.bsi = document.getElementById(idSet.i31).value;
   msg.bsima = document.getElementById(idSet.i32).value;
 
-  if(document.getElementById(idSet.i2).value == "test") {msg = jsonTestMSG;}
-  if(document.getElementById(idSet.i2).value == "test2") {msg = jsonTest2MSG;}
+  if (document.getElementById(idSet.i2).value == "test") {
+    msg = jsonTestMSG;
+  }
+  if (document.getElementById(idSet.i2).value == "test2") {
+    msg = jsonTest2MSG;
+  }
 
   console.table(msg);
   return msg;

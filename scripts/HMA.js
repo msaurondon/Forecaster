@@ -1,8 +1,19 @@
 function hmaCalculation(msg) {
-  var multipliers = { vs: 1.382, s: 0.618, b: 0.5 };
-  var hmaValues = [
-    { key: 8, bull: msg.atr * multipliers.vs, bear: 0 },
-    { key: 7, bull: msg.atr, bear: 0 },
+  var multipliers = {
+    vs: 1.382,
+    s: 0.618,
+    b: 0.5
+  };
+  var hmaValues = [{
+      key: 8,
+      bull: msg.atr * multipliers.vs,
+      bear: 0
+    },
+    {
+      key: 7,
+      bull: msg.atr,
+      bear: 0
+    },
     {
       key: 6,
       bull: msg.atr * multipliers.s,
@@ -23,8 +34,16 @@ function hmaCalculation(msg) {
       bull: msg.atr * multipliers.b,
       bear: msg.atr * multipliers.s * -1
     },
-    { key: 2, bull: 0, bear: msg.atr * -1 },
-    { key: 1, bull: 0, bear: msg.atr * multipliers.vs * -1 }
+    {
+      key: 2,
+      bull: 0,
+      bear: msg.atr * -1
+    },
+    {
+      key: 1,
+      bull: 0,
+      bear: msg.atr * multipliers.vs * -1
+    }
   ];
   var hmaDD = validateHMAdd(msg.hmaDD, msg.consolDD);
 

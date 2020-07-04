@@ -5,7 +5,7 @@ function summarizeAPO(msg) {
     msg.indicatorCounter.Bull++;
     msg.confirmSummary.Bull++;
   }
-  if(msg.apo < 0) {
+  if (msg.apo < 0) {
     apoDIR = "Bear";
     msg.indicatorCounter.Bear++;
     msg.confirmSummary.Bear++;
